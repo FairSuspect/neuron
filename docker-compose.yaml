@@ -1,0 +1,5 @@
+services:
+  neuron:
+    image: continuumio/miniconda3
+    volumes:
+    - ${HOME}/data:/data
