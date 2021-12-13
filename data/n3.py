@@ -26,7 +26,7 @@ model.add(Dense(units=1, activation='linear'))
 model.compile('adam', 'mean_squared_error')
 model.fit(X, y, epochs=100)
 
-pred = np.array([180])
+pred = np.array([180, -180, 0 , -0])
 answer = model.predict(pred)
 
 print(pred, " градусов в радианы: ", answer)
