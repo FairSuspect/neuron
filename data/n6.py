@@ -4,8 +4,7 @@ import numpy as np
 X =[]
 y =[]
 for i in range(1000):
-    X.append([random.randint(1, 1000), random.randint(1, 1000)])
-    y.append(sum(X[i]))
+    X.append([random.uniform(1, 1000), random.uniform(1, 1000)])
 
 X = np.array(X)
 y = np.array(y).reshape(-1,1)
