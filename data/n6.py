@@ -15,18 +15,19 @@ from keras.layers import Dense
 
 model = Sequential()
 
-model.add(Dense(output_dim=6, activation='relu', input_dim=2))
-model.add(Dense(output_dim=12, activation='relu'))
-model.add(Dense(output_dim=12, activation='relu'))
-model.add(Dense(output_dim=6, activation='relu'))
-model.add(Dense(output_dim=1, activation='linear'))
+model.add(Dense(units=6, activation='relu', input_dim=2))
+model.add(Dense(units=12, activation='relu'))
+model.add(Dense(units=12, activation='relu'))
+model.add(Dense(units=6, activation='relu'))
+model.add(Dense(units=1, activation='linear'))
 
 model.compile('adam', 'mean_squared_error')
 model.fit(X, y, epochs=200)
 
-pred = np.array([[7,65]])
+pred = np.array([[3,1], [2, 9], [1,1], [0,0], [0,3]])
 #pred = sclr.transform(pred)
-predd = model.predict(pred)
-#predd = sclr2.inverse_transform(predd)
-
-print("Значение суммы ",pred,": ", predd)
+answer = model.predict(pred)
+#answer = sclr2.inverse_transform(answer)
+d = dict(pred,answer)
+print("Значение суммы ",pred,": ", answer)
+print(d)
