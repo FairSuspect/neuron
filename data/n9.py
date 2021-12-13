@@ -1,14 +1,14 @@
 import random
 import numpy as np
 
-X =[]
-y =[]
+inputs =[]
+asnwers =[]
 for i in range(2000):
-    X.append([round(random.uniform(0, 1),5), round(random.uniform(0, 1),5), round(random.uniform(0, 1),5) ])
-    y.append(X[i][0]*X[i][1]*X[i][2])
+    inputs.append([round(random.uniform(0, 1),5), round(random.uniform(0, 1),5), round(random.uniform(0, 1),5) ])
+    asnwers.append(inputs[i][0]*inputs[i][1]*inputs[i][2])
 
-X = np.array(X)
-y = np.array(y).reshape(-1,1)
+inputs = np.array(inputs)
+asnwers = np.array(asnwers).reshape(-1,1)
 
 from keras.models import Sequential
 from keras.layers import Dense
@@ -21,9 +21,9 @@ model.add(Dense(units=6, activation='relu'))
 model.add(Dense(units=1, activation='linear'))
 
 model.compile('adam', 'mean_absolute_error')
-model.fit(X, y, epochs=300)
+model.fit(inputs, asnwers, epochs=350)
 
 for i in range(10):
-    pred = np.array([[round(random.uniform(0,1), 2),round(random.uniform(0,1), 2),round(random.uniform(0,1), 2)]])
-    predd = model.predict(pred)
-    print("Значение произведения чисел ",pred, " = ", round(pred[0][0]*pred[0][1]*pred[0][2],2),": ", round(predd[0][0],2))
+    predict = np.array([[round(random.uniform(0,1), 2),round(random.uniform(0,1), 2),round(random.uniform(0,1), 2)]])
+    answer = model.predict(predict)
+    print("Результат произведения чисел ",predict, " = ", round(predict[0][0]*predict[0][1]*predict[0][2],2),"(В ручную), ", round(answer[0][0],2), "(Нейронная сеть)")
