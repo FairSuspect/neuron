@@ -26,10 +26,15 @@ model.add(Dense(units=1, activation='linear'))
 model.compile('adam', 'mean_squared_error')
 model.fit(X, y, epochs=100)
 
-pred = np.array([550])
-#pred = sclr.transform(pred)
-predd = model.predict(pred)
-#predd = sclr2.inverse_transform(predd)
-print(pred)
+pred = np.array([180])
+answer = model.predict(pred)
 
-print(pred, " градусов в радианы: ", predd)
+print(pred, " градусов в радианы: ", answer)
+pred = np.array([360])
+answer = model.predict(pred)
+
+print(pred, " градусов в радианы: ", answer)
+pred = np.array([90])
+answer = model.predict(pred)
+
+print(pred, " градусов в радианы: ", answer)
