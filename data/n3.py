@@ -24,11 +24,12 @@ model.add(Dense(units=6, activation='relu'))
 model.add(Dense(units=1, activation='linear'))
 
 model.compile('adam', 'mean_squared_error')
-model.fit(X, y, epochs=50)
+model.fit(X, y, epochs=100)
 
 pred = np.array([550])
 #pred = sclr.transform(pred)
 predd = model.predict(pred)
 #predd = sclr2.inverse_transform(predd)
+print(pred)
 
 print(pred, " градусов в радианы: ", predd)
